@@ -1,0 +1,25 @@
+<div class="col-md-4">
+  <div class="list-group">
+    <div li class="list-group-item">
+      {{input type="text" class="new-project" placeholder="New Project" value=title}}
+      <button class="btn btn-primary btn-sm new-project-button"
+        disabled={{isAddButtonDisabled}}
+        {{action "createProject"}}>Add</button>
+    </div>
+    {{#each model as |project|}}
+      {{#link-to 'projects.project.tasks' project class="list-group-item project-link"}}
+        {{project.title}}
+        <span class="pointer glyphicon glyphicon-chevron-right"></span>
+      {{/link-to}}
+    {{else}}
+      <div li class="list-group-item">
+        Sorry, nobody is here.
+      </div>
+    {{/each}}
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="list-group">
+    {{outlet}}
+  </div>
+</div>

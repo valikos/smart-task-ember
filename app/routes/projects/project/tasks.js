@@ -1,0 +1,22 @@
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+  model() {
+    return this.modelFor('projects.project');
+  },
+  actions: {
+    createTask: function() {
+      var ctrl = this.get('controller'),
+          project = this.modelFor('projects.project');
+
+      var task = this.store.createRecord('task', {
+        title: ctrl.get('title'),
+        project: project
+      });
+
+      task.save().then(function() {
+        ctrl.set('title', '');
+      });
+    }
+  }
+});

@@ -1,0 +1,15 @@
+<div class="row">
+  <ul class="list-group songs">
+    <li class="list-group-item">
+      {{input type="text" class="new-task" placeholder="New Task" value=title}}
+      <button class="btn btn-primary btn-sm new-task-button"
+        {{action "createTask"}}>Add</button>
+    </li>
+    {{#each model.tasks as |task|}}
+      <li class="list-group-item task">
+        {{task.title}}
+        {{!-- <span class="rating pull-right">{{task.status}}</span> --}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
