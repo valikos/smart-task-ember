@@ -1,15 +1,25 @@
 <div class="row">
   <ul class="list-group songs">
-    <li class="list-group-item">
-      {{input type="text" class="new-task" placeholder="New Task" value=title}}
-      <button class="btn btn-primary btn-sm new-task-button"
-        {{action "createTask"}}>Add</button>
-    </li>
+    {{#if canCreateTask}}
+      <li class="list-group-item">
+        <form class="new-task-form" {{action "createTask" on="submit"}}>
+          {{input type="text" class="new-task" placeholder="New task" value=title}}
+          <button class="btn btn-primary btn-sm new-task-button" disabled={{isAddButtonDisabled}}>Add</button>
+        </form>
+      </li>
+    {{/if}}
     {{#each model.tasks as |task|}}
       <li class="list-group-item task">
         {{task.title}}
         {{!-- <span class="rating pull-right">{{task.status}}</span> --}}
       </li>
     {{/each}}
+    {{#unless canCreateTask}}
+      <li class="list-group-item empty-list">
+        <div class="empty-message">
+          There are no tasks yet. Why don't you <a href="#" {{action "enableTaskCreation"}}>create one?</a>
+        </div>
+      </li>
+    {{/unless}}
   </ul>
 </div>

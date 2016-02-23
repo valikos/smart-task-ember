@@ -4,6 +4,11 @@ export default Ember.Route.extend({
   model() {
     return this.modelFor('projects.project');
   },
+
+  resetController: function(controller) {
+    controller.set('taskCreationStarted', false);
+  },
+
   actions: {
     createTask: function() {
       var ctrl = this.get('controller'),

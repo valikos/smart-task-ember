@@ -1,1 +1,7 @@
-{{outlet}}
+<ul class="nav nav-tabs">
+  <li>{{link-to "Details" "projects.project.details" model}}</li>
+  <li>{{link-to "Tasks"   "projects.project.tasks"   model}}</li>
+</ul>
+<div class="project-info">
+  {{outlet}}
+</div>

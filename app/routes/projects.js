@@ -4,7 +4,12 @@ export default Ember.Route.extend({
   model() {
     return this.store.findAll('project');
   },
+
   actions: {
+    didTransition: function() {
+      document.title = 'Custom transition title';
+    },
+
     createProject: function() {
       var route = this,
           ctrl = this.get('controller');
