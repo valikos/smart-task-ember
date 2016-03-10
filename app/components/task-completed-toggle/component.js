@@ -2,17 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'span',
-  classNames: ['glyphicon', 'glyphicon-trash', 'delete-task'],
+  classNames: ['task-status-toggle'],
 
-  openModal: false,
+  isCompleted: Ember.computed('task.completed', function() {
+    return this.get('task.completed');
+  }),
 
   actions: {
-    submit: function() {
+    changed: function() {
       this.sendAction('setAction', this.get('task'));
     }
-  },
-
-  click: function() {
-    this.set('openModal', true);
   }
 });

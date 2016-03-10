@@ -40,6 +40,10 @@ html, body {
   margin-bottom: 20px;
 }
 
+.task-status-toggle {
+  margin-right: 10px;
+}
+
 .tasks .rating {
   color: #aaa;
   font-size: 1.1em;
@@ -118,4 +122,9 @@ html, body {
 
 .delete-task {
   cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #BDBDBD;
 }

@@ -25,6 +25,10 @@ export default Ember.Route.extend({
     },
     deleteTask: function(task) {
       task.destroyRecord();
+    },
+    toggleTaskStatus: function(task) {
+      task.set('completed', !task.get('completed'));
+      task.save();
     }
   }
 });
