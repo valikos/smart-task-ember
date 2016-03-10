@@ -22,6 +22,9 @@ export default Ember.Route.extend({
       task.save().then(function() {
         ctrl.set('title', '');
       });
+    },
+    deleteTask: function(task) {
+      task.destroyRecord();
     }
   }
 });

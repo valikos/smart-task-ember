@@ -115,3 +115,7 @@ html, body {
   background-color: #428bca;
   border-color: #428bca;
 }
+
+.delete-task {
+  cursor: pointer;
+}

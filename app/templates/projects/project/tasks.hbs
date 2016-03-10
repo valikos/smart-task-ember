@@ -11,6 +11,9 @@
     {{#each model.tasks as |task|}}
       <li class="list-group-item task">
         {{task.title}}
+        <div class="pull-right">
+          {{delete-task task=task setAction='deleteTask'}}
+        </div>
         {{!-- <span class="rating pull-right">{{task.status}}</span> --}}
       </li>
     {{/each}}
