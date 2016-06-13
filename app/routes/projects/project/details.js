@@ -4,16 +4,16 @@ export default Ember.Route.extend({
   model: function() {
     return this.modelFor('projects.project');
   },
+
   actions: {
-    save: function() {
+    save() {
       var controller = this.get('controller'),
           project = controller.get('model');
 
       return project.save();
-
     },
 
-    willTransition: function(transition) {
+    willTransition(transition) {
       var controller = this.get('controller'), leave;
 
       if (controller.get('isEditin')) {

@@ -7,12 +7,12 @@ export default Ember.Component.extend({
   openModal: false,
 
   actions: {
-    submit: function() {
+    submit() {
       this.sendAction('setAction', this.get('task'));
     }
   },
 
-  click: function() {
+  click() {
     this.set('openModal', true);
   }
 });

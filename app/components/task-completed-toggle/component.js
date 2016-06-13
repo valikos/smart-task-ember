@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    changed: function() {
+    changed() {
       this.sendAction('setAction', this.get('task'));
     }
   }

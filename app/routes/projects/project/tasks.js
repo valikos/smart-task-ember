@@ -10,7 +10,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    createTask: function() {
+    createTask() {
       var ctrl = this.get('controller'),
           project = this.modelFor('projects.project');
 
@@ -23,10 +23,12 @@ export default Ember.Route.extend({
         ctrl.set('title', '');
       });
     },
-    deleteTask: function(task) {
+
+    deleteTask(task) {
       task.destroyRecord();
     },
-    toggleTaskStatus: function(task) {
+
+    toggleTaskStatus(task) {
       task.set('completed', !task.get('completed'));
       task.save();
     }

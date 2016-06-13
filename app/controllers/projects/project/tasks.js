@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    enableTaskCreation: function() {
+    enableTaskCreation() {
       this.set('taskCreationStarted', true);
     }
   }
