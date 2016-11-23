@@ -1,10 +1,16 @@
 import Ember from 'ember';
+import Cookies from 'ember-cli-js-cookie';
 
 export default Ember.Service.extend({
 
   ajax: Ember.inject.service(),
 
   authToken: null,
+
+  authFromCookie() {
+    if (Cookies.get('authToken'))
+      return this.set('authToken', Cookies.get('authToken'));
+  },
 
   authenticate(login, password) {
     return this.get('ajax').raw('http://localhost:2300/auth/login', {
@@ -16,12 +22,14 @@ export default Ember.Service.extend({
         'Accept': 'application/vnd.api+json'
       }
     }).then((response) => {
-      this.set('authToken', response.jqXHR.getResponseHeader('Authorization'));
+      Cookies.set('authToken', response.jqXHR.getResponseHeader('Authorization'));
+      this.set('authToken', Cookies.get('authToken'));
     });
   },
 
   invalidate() {
-    this.set('accessToken', null);
+    Cookies.remove('authToken');
+    this.set('authToken', null);
   },
 
   isAuthenticated: Ember.computed.bool('authToken')

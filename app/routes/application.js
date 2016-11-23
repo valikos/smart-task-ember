@@ -1,16 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  actions: {
-    error(reason, transition) {
-      this.transitionTo('/auth');
-      return false;
-    },
+  authManager: Ember.inject.service(),
 
-    afterAuthentication(reason, transition) {
-      debugger
-      this.transitionTo('/projects');
-      return false;
-    }
+  beforeModel() {
+    this.get('authManager').authFromCookie();
+
+    if (this.get('authManager.isAuthenticated'))
+      this.transitionTo('projects');
+    else
+      this.transitionTo('auth');
   }
 });

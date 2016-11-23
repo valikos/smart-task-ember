@@ -9,13 +9,13 @@ export default DS.JSONAPIAdapter.extend({
 
   authManager: Ember.inject.service(),
 
-  headers: Ember.computed('authManager.accessToken', function() {
+  headers: Ember.computed('authManager.authToken', function() {
     return {
-      "Authorization": `Bearer ${this.get("authManager.accessToken")}`
+      "Authorization": `Bearer ${this.get("authManager.authToken")}`
     };
   }),
 
-  // shouldBackgroundReloadRecord: function() {
-  //   return false;
-  // }
+  shouldBackgroundReloadRecord: function() {
+    return false;
+  }
 });
